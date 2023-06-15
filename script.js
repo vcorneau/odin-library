@@ -1,3 +1,5 @@
+let myLibrary = ["buns", "butts", "bingo"];
+
 function Book(title, author, pages, read) {
   this.title = title
   this.author = author
@@ -12,8 +14,15 @@ function Book(title, author, pages, read) {
   }
 }
 
-const bookOne = new Book("Train your Brain", "Emily Stonecipher", 200, true)
-const bookTwo = new Book("Train your Butt", "My brain", 100, false)
+/*Write a function that loops through the array and displays 
+each book on the page. You can display them in some sort of table, 
+or each on their own “card”. It might help for now to manually add a 
+few books to your array so you can see the display.*/
 
-console.log(bookOne.info());
-console.log(bookTwo.info());
+function displayBooks() {
+  let i = 0;
+  while (i <= myLibrary.length-1){
+    console.log(myLibrary.at(i));
+    i++
+    }
+  }
