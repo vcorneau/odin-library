@@ -3,9 +3,9 @@ function Book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   if (read) {
-    this.read = "has been read"
+    this.read = "Has been read"
   } else {
-    this.read = "has not been read"
+    this.read = "Has not been read"
   }
 }
 
@@ -23,16 +23,29 @@ function displayBooks() {
   while (i < myLibrary.length){
     let newCard = document.createElement("div")
     newCard.className = "bookCard";
+    let subCardTitle = document.createElement("p");
+    subCardTitle.className = "title";
+    let subCardAuthor = document.createElement("p");
+    subCardAuthor.className = "author";
+    let subCardPages = document.createElement("p");
+    subCardPages.className = "pages";
+    let subCardRead = document.createElement("p");
+    subCardRead.className = "read";
 
-    let title = document.createTextNode(myLibrary.at(i).title);
-    let author = document.createTextNode(myLibrary.at(i).author);
-    let pages = document.createTextNode(myLibrary.at(i).pages);
-    let read = document.createTextNode(myLibrary.at(i).read);
+    newCard.appendChild(subCardTitle);
+    newCard.appendChild(subCardAuthor);
+    newCard.appendChild(subCardPages);
+    newCard.appendChild(subCardRead);
 
-    newCard.appendChild(title);
-    newCard.appendChild(author);
-    newCard.appendChild(pages);
-    newCard.appendChild(read);
+    let title = document.createTextNode(myLibrary[i].title);
+    let author = document.createTextNode(myLibrary[i].author);
+    let pages = document.createTextNode(myLibrary[i].pages + " pages");
+    let read = document.createTextNode(myLibrary[i].read);
+
+    subCardTitle.appendChild(title);
+    subCardAuthor.appendChild(author);
+    subCardPages.appendChild(pages);
+    subCardRead.appendChild(read);
 
     const element = document.getElementById("inventory");
     element.appendChild(newCard);
