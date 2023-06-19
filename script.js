@@ -26,19 +26,12 @@ familiar with event.preventDefault();.
 Read up on the event.preventDefault documentation again 
 and see how you can solve this issue! */
 
-let addBookButton = document.getElementById("addBook")
-
-addBookButton.addEventListener("click", addNewBook);
-
-function addNewBook() {
-  console.log("test");
-}
-
 function displayBooks() {
   let i = 0;
   while (i < myLibrary.length){
-    let newCard = document.createElement("div")
+    let newCard = document.createElement("div");
     newCard.className = "bookCard";
+    
     let subCardTitle = document.createElement("p");
     subCardTitle.className = "title";
     let subCardAuthor = document.createElement("p");
@@ -74,3 +67,22 @@ function displayBooks() {
   }
 
   displayBooks();
+
+let addBookButton = document.getElementById("addBook")
+
+addBookButton.addEventListener("click", addNewBook);
+
+function addNewBook() {
+  let form = document.createElement("div");
+  form.className = "form";
+
+  let newTitleField = document.createElement("input");
+  newTitleField.type = "text";
+  newTitleField.className = "field";
+  newTitleField.id = "titleField";
+  newTitleField.placeholder = "Title";
+  form.appendChild(newTitleField);
+
+  let displayForm = document.getElementById("formContainer");
+  displayForm.appendChild(form);
+}
