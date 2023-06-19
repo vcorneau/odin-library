@@ -76,13 +76,55 @@ function addNewBook() {
   let form = document.createElement("div");
   form.className = "form";
 
-  let newTitleField = document.createElement("input");
-  newTitleField.type = "text";
-  newTitleField.className = "field";
-  newTitleField.id = "titleField";
-  newTitleField.placeholder = "Title";
-  form.appendChild(newTitleField);
+  let title = document.createElement("input");
+  title.type = "text";
+  title.className = "field";
+  title.id = "titleField";
+  title.placeholder = "Title";
+  form.appendChild(title);
+  
+  let author = document.createElement("input");
+  author.type = "text";
+  author.className = "field";
+  author.id = "pagesField";
+  author.placeholder = "Author";
+  form.appendChild(author);
+
+  let pages = document.createElement("input");
+  pages.type = "text";
+  pages.className = "field";
+  pages.id = "pagesField";
+  pages.placeholder = "Pages";
+  form.appendChild(pages);
+
+  let read = document.createElement("Input");
+  read.type = "checkbox";
+  read.className = "checkbox";
+  read.id = "readButton";
+  read.innerHTML = "Read";
+  form.appendChild(read);
+
+  let submitButton = document.createElement("button");
+  submitButton.className = "submitButton";
+  submitButton.id = "submitButton";
+  submitButton.innerHTML = "Submit";
+  form.appendChild(submitButton);
 
   let displayForm = document.getElementById("formContainer");
   displayForm.appendChild(form);
+
+  const submission = document.querySelector("#submitButton");
+  submission.addEventListener("click", submitForm);
+  
+  function submitForm(event) {
+    document.getElementById("titleField").innerHTML;
+    event.preventDefault();
+  }
+
+  submitButton.addEventListener("click", function(title, author) {
+    let newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+    console.log(myLibrary);
+
+  });
 }
