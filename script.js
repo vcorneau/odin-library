@@ -102,6 +102,11 @@ function addNewBookForm() {
 const addBook = document.getElementById("addBook");
 addBook.addEventListener("click", addNewBookForm);
 
+function clearInventory() {
+  const inventory = document.getElementById("inventory");
+  inventory.innerHTML = '';
+}
+
 // Submits form and displays books to the page
 function submitForm(event) {
   event.preventDefault();
@@ -112,6 +117,7 @@ function submitForm(event) {
   let read = readButton.value;
   let newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
+  clearInventory();
   displayBooks();
 }
 
