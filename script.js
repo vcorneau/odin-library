@@ -1,3 +1,4 @@
+// Book constructor
 function Book(title, author, pages, read) {
   this.title = title
   this.author = author
@@ -9,20 +10,9 @@ function Book(title, author, pages, read) {
   }
 }
 
-//Temporary code adding books to the array
-let bookTemp1 = new Book("You Better Be Lightning", "Andrea Gibson", 115, false);
-let bookTemp2 = new Book("The Midnight Library", "Matt Haig", 304, false);
-let bookTemp3 = new Book("The Martian", "Andrew Weir", 384, true);
-let myLibrary = [bookTemp1, bookTemp2, bookTemp3];
-//End of temporary code
+let myLibrary = [];
 
-function createNewBook() {
-  let newBook = new Book(title, author);
-  myLibrary.push(newBook);
-  console.log(myLibrary);
-  displayBooks();
-};
-
+// Creates a new card to display books from array
 function displayBooks() {
   let i = 0;
   while (i < myLibrary.length){
@@ -62,10 +52,9 @@ function displayBooks() {
     i++
     }
   }
-document.getElementById("addBook");
-addBook.addEventListener("click", addNewBook);
 
-function addNewBook() {
+// Creates a form to enter new book information
+function addNewBookForm() {
   let form = document.createElement("div");
   form.className = "form";
   form.id = "form";
@@ -80,7 +69,7 @@ function addNewBook() {
   let author = document.createElement("input");
   author.type = "text";
   author.className = "field";
-  author.id = "pagesField";
+  author.id = "authorField";
   author.placeholder = "Author";
   form.appendChild(author);
 
@@ -109,16 +98,28 @@ function addNewBook() {
 
   const submission = document.querySelector("#submitButton");
   submission.addEventListener("click", submitForm);
-  
-  function submitForm(event) {
-    document.getElementById("titleField").innerHTML;
-    event.preventDefault();
-  }
-
-  submitButton.addEventListener("click", function() {
-    let newBook = new Book(title, author);
-    myLibrary.push(newBook);
-    console.log(myLibrary);
-    displayBooks();
-  });
 }
+const addBook = document.getElementById("addBook");
+addBook.addEventListener("click", addNewBookForm);
+
+// Returns title from input
+function returnTitle() {
+  document.getElementById("titleField");
+  let title = titleField.input;
+  return title;
+}
+
+function submitForm(event) {
+  event.preventDefault();
+  document.getElementsByClassName("field");
+  let title = titleField.value;
+  let author = authorField.value;
+  let pages = pagesField.value;
+  let read = readButton.value;
+  let newBook = new Book(title, author, pages, read);
+  myLibrary.push(newBook);
+  displayBooks();
+}
+
+const submitButton = document.getElementById("submitButton");
+submitButton.addEventListener("click", submitForm());
