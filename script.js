@@ -16,15 +16,12 @@ let bookTemp3 = new Book("The Martian", "Andrew Weir", 384, true);
 let myLibrary = [bookTemp1, bookTemp2, bookTemp3];
 //End of temporary code
 
-/*Add a “NEW BOOK” button that brings up a form allowing users to input the 
-details for the new book: author, title, number of pages, whether it’s been 
-read and anything else you might want. You will most likely encounter an issue 
-where submitting your form will not do what you expect it to do. 
-That’s because the submit input tries to send the data to a server by default. 
-If you’ve done the bonus section for the calculator assignment, you might be 
-familiar with event.preventDefault();. 
-Read up on the event.preventDefault documentation again 
-and see how you can solve this issue! */
+function createNewBook() {
+  let newBook = new Book(title, author);
+  myLibrary.push(newBook);
+  console.log(myLibrary);
+  displayBooks();
+};
 
 function displayBooks() {
   let i = 0;
@@ -65,16 +62,13 @@ function displayBooks() {
     i++
     }
   }
-
-  displayBooks();
-
-let addBookButton = document.getElementById("addBook")
-
-addBookButton.addEventListener("click", addNewBook);
+document.getElementById("addBook");
+addBook.addEventListener("click", addNewBook);
 
 function addNewBook() {
   let form = document.createElement("div");
   form.className = "form";
+  form.id = "form";
 
   let title = document.createElement("input");
   title.type = "text";
@@ -121,10 +115,10 @@ function addNewBook() {
     event.preventDefault();
   }
 
-  submitButton.addEventListener("click", function(title, author) {
-    let newBook = new Book(title, author, pages, read);
+  submitButton.addEventListener("click", function() {
+    let newBook = new Book(title, author);
     myLibrary.push(newBook);
     console.log(myLibrary);
-
+    displayBooks();
   });
 }
