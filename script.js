@@ -102,13 +102,7 @@ function addNewBookForm() {
 const addBook = document.getElementById("addBook");
 addBook.addEventListener("click", addNewBookForm);
 
-// Returns title from input
-function returnTitle() {
-  document.getElementById("titleField");
-  let title = titleField.input;
-  return title;
-}
-
+// Submits form and displays books to the page
 function submitForm(event) {
   event.preventDefault();
   document.getElementsByClassName("field");
