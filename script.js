@@ -28,9 +28,9 @@ function displayBooks() {
     let subCardRead = document.createElement("p");
     subCardRead.className = "read";
     let removeBook = document.createElement("button");
-    removeBook.id = "removeBook";
     removeBook.className = "removeBook";
     removeBook.innerHTML = "X";
+    removeBook.value = i;
 
     newCard.appendChild(subCardTitle);
     newCard.appendChild(subCardAuthor);
@@ -128,7 +128,6 @@ function submitForm(event) {
   let read = isRead.options[isRead.selectedIndex].value;
   let newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
-  console.log(read);
   clearInventory();
   displayBooks();
 }
@@ -136,6 +135,11 @@ function submitForm(event) {
 /* Add function to remove a book card and remove book from array
 when the X is clicked */
 let removeButton = document.getElementById("removeBook");
+
+function deleteBook() {
+  document.getElementsByClassName("removeBook");
+  //Add event listener to get value of removeBook button on click. 
+}
 
 
 const submitButton = document.getElementById("submitButton");
