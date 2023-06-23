@@ -3,7 +3,7 @@ function Book(title, author, pages, read) {
   this.title = title
   this.author = author
   this.pages = pages
-  if (read) {
+  if (read === "true") {
     this.read = "Has been read"
   } else {
     this.read = "Has not been read"
@@ -28,6 +28,7 @@ function displayBooks() {
     let subCardRead = document.createElement("p");
     subCardRead.className = "read";
     let removeBook = document.createElement("button");
+    removeBook.id = "removeBook";
     removeBook.className = "removeBook";
     removeBook.innerHTML = "X";
 
@@ -80,12 +81,20 @@ function addNewBookForm() {
   pages.placeholder = "Pages";
   form.appendChild(pages);
 
-  let read = document.createElement("Input");
-  read.type = "checkbox";
-  read.className = "checkbox";
-  read.id = "readButton";
+  let readSelect = document.createElement("select");
+  readSelect.className = "readSelect";
+  readSelect.id = "readSelect";
+  form.appendChild(readSelect);
+
+  let read = document.createElement("option");
   read.innerHTML = "Read";
-  form.appendChild(read);
+  read.value = "true";
+  readSelect.appendChild(read);
+
+  let notRead = document.createElement("option");
+  notRead.innerHTML = "Not Read";
+  notRead.value = "false";
+  readSelect.appendChild(notRead);
 
   let submitButton = document.createElement("button");
   submitButton.className = "submitButton";
@@ -107,19 +116,27 @@ function clearInventory() {
   inventory.innerHTML = '';
 }
 
+
 // Submits form and displays books to the page
 function submitForm(event) {
   event.preventDefault();
   document.getElementsByClassName("field");
+  const isRead = document.getElementById("readSelect");
   let title = titleField.value;
   let author = authorField.value;
   let pages = pagesField.value;
-  let read = readButton.value;
+  let read = isRead.options[isRead.selectedIndex].value;
   let newBook = new Book(title, author, pages, read);
   myLibrary.push(newBook);
+  console.log(read);
   clearInventory();
   displayBooks();
 }
+
+/* Add function to remove a book card and remove book from array
+when the X is clicked */
+let removeButton = document.getElementById("removeBook");
+
 
 const submitButton = document.getElementById("submitButton");
 submitButton.addEventListener("click", submitForm());
